@@ -15,7 +15,7 @@ define(['N/ui/dialog', 'N/currentRecord'], function(dialog, currentRecord) {
 
     function validateField(context) {
         const cr = context.currentRecord;
-        if( context.filedId == 'quantity' && context.sublistId == 'item'){
+        if( context.filedId === 'quantity' && context.sublistId === 'item'){
            const total_quantity = cr.getCurrentSublistValue({
                 sublistId: 'item',
                 fieldId: 'quantity'
