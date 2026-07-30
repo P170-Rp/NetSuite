@@ -12,9 +12,8 @@ define(['N/file', 'N/query', 'N/record', 'N/runtime', 'N/task', 'N/search'],
  * @param{record} record
  * @param{runtime} runtime
      *@param{task} task
-     @param{search} search
- */
-    (file, query, record, runtime, search) => {
+    *@param{search} search **/
+    (file, query, record, runtime, search, task) => {
 
         /**
          * Defines the Scheduled script trigger point.
@@ -96,13 +95,11 @@ define(['N/file', 'N/query', 'N/record', 'N/runtime', 'N/task', 'N/search'],
 
 
                     try {
-
                         let val = search.lookupFields({
                             type: search.Type.CUSTOMER,
                             id: item.id,
                             columns: ['custentity_bits_total_sales_order'],
                         })
-
 
                         if (!val.custentity_bits_total_sales_order) {
                             record.submitFields({
@@ -111,7 +108,6 @@ define(['N/file', 'N/query', 'N/record', 'N/runtime', 'N/task', 'N/search'],
                                 values: {
                                     custentity_bits_total_sales_order: item.total_transactions
                                 }
-
                             })
                             log.debug({
                                 title: 'Record Updated',
@@ -120,7 +116,7 @@ define(['N/file', 'N/query', 'N/record', 'N/runtime', 'N/task', 'N/search'],
                         }
                     }catch(error){
                             log.debug({title: 'Error Updating Customer ' + '|' +item.id, details: error });
-                        }
+                    }
                 }
             }catch(error){
                 log.debug({
