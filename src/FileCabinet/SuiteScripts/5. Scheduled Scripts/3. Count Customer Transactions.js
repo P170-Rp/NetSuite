@@ -125,6 +125,27 @@ define(['N/file', 'N/query', 'N/record', 'N/runtime', 'N/task', 'N/search'],
                 })
             }
 
+
+            try{
+                log.debug('File Creation:', 'File creation');
+
+                csv_content = 'id, entityid, companyname, total_transactions\n';
+                QueryResult.forEach(row => {
+                    csv_content += `"${row.id}", "${row.entityId}, ${row.companyname}", "${row.total_transactions}"\n`;
+                })
+                file.create({
+                    name: 'Total Transactions by Customer',
+                    fileType: file.Type.CSV,
+                    contents: csv_content,
+                    folder: 137,
+                })
+            }catch (e){
+                log.debug({
+                    title: 'Error File Creation',
+                    details: 'Error in File Creation' +'|'+e.message,
+                })
+            }
+
             log.debug({
                 title: 'Script execution is ended',
                 message: 'Script execution is ended'+ '|'+ runtime.getCurrentScript().getRemainingUsage(),

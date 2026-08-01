@@ -297,7 +297,6 @@ define(['N/ui/message',
             const rate = context.currentRecord.getCurrentSublistValue({ sublistId: 'items', fieldId: 'rate' })
             const discription = context.currentRecord.getCurrentSublistText({ sublistId: 'items', fieldId: 'description' })
             const Amount = context.currentRecord.getCurrentSublistValue({ sublistId: 'items', fieldId: 'amount' })
-            const linecount = context.currentRecord.getLineCount({ sublistId: 'itemss' });
             const cueerntItem = context.currentRecord.getCurrentSublistValue({ sublistId: 'items', fieldId: 'item' });
 
 
